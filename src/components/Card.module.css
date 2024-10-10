@@ -1,0 +1,10 @@
+.card {
+  background-color: aliceblue;
+  width: 90px;
+  height: 90px;
+}
+
+.lifted {
+  composes: card;
+  background-color: greenyellow;
+}

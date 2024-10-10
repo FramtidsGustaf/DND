@@ -1,0 +1,14 @@
+.column {
+  height: 90svh;
+  border: 2px dashed #0087f7;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.highlighted {
+  composes: column;
+  background-color: #f7f7f7;
+}
