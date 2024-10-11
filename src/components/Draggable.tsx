@@ -1,32 +1,27 @@
 import { type HTMLAttributes, type DragEventHandler } from "react";
 import { useKanban } from "../hooks/useKanban";
-import { ColumnsObject } from "../utils/ColumnsObject";
+import { Void } from "./Void";
 
 interface DraggableProps extends HTMLAttributes<HTMLDivElement> {
   id: string;
 }
 
 export const Draggable = ({ id, children, ...rest }: DraggableProps) => {
-  const { setColumns } = useKanban();
+  const { liftDraggable } = useKanban();
 
   const handleDragStart: DragEventHandler = (event) => {
     event.dataTransfer.dropEffect = "move";
     event.dataTransfer.setData("text/plain", id);
 
-    setColumns((columns: ColumnsObject) => {
-      const newColumns = columns.clone();
-
-      const draggable = newColumns.findDraggableById(id);
-
-      draggable.lift();
-
-      return newColumns;
-    });
+    liftDraggable(id);
   };
 
   return (
-    <div draggable onDragStart={handleDragStart} {...rest}>
-      {children}
-    </div>
+    <>
+      <Void id={id} />
+      <div draggable onDragStart={handleDragStart} id={id} {...rest}>
+        {children}
+      </div>
+    </>
   );
 };

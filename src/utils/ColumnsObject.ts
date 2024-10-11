@@ -38,7 +38,9 @@ export class ColumnsObject {
 
   findDraggableById(id: string) {
     let draggable: DraggableObject | undefined;
+
     for (const column of this.columns) {
+      if (!column.hasDraggable(id)) continue;
       draggable = column.findDraggableById(id);
       if (draggable) break;
     }

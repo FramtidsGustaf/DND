@@ -1,0 +1,20 @@
+.void {
+  min-height: 30px;
+  width: 100%;
+}
+
+.expanded {
+  composes: void;
+  min-height: 130px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &::after {
+    content: "";
+    display: block;
+    border: dashed 1px #0087f7;
+    height: 100px;
+    width: 200px;
+  }
+}

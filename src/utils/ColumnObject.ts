@@ -34,7 +34,11 @@ export class ColumnObject {
   }
 
   findDraggableById(id: string) {
-    return this.draggables.find((draggable) => draggable.id === id);
+    const draggable = this.draggables.find((draggable) => draggable.id === id);
+
+    if (!draggable) throw new Error("Draggable not found");
+
+    return draggable;
   }
 
   hasDraggable(id: string) {
@@ -53,5 +57,15 @@ export class ColumnObject {
 
   highlight() {
     this.isHighlighted = true;
+  }
+
+  getDraggableIndex(draggableId: string) {
+    return this.draggables.findIndex(
+      (draggable) => draggable.id === draggableId
+    );
+  }
+
+  insertDraggableAtIndex(draggable: DraggableObject, index: number) {
+    this.draggables.splice(index, 0, draggable);
   }
 }

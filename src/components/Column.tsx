@@ -10,14 +10,15 @@ export const Column = ({ id }: { id: string }) => {
   const column = findColumnById(id);
 
   return (
-    <DropZone
-      id={id}
+    <div
       className={column.isHighlighted ? classes.highlighted : classes.column}
     >
       <h2>{column.id}</h2>
       {column.draggables.map((draggable) => (
         <Card key={draggable.id} draggableId={draggable.id} />
       ))}
-    </DropZone>
+
+      <DropZone id={id} />
+    </div>
   );
 };

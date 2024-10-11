@@ -8,6 +8,14 @@ const mockDataJSON = JSON.stringify({
       draggables: [
         { id: "draggable-1", content: { text: "Drag me!" } },
         { id: "draggable-2", content: { text: "Drag me, too!" } },
+        {
+          id: "draggable-4",
+          content: { text: "I'm a draggable" },
+        },
+        {
+          id: "draggable-5",
+          content: { text: "I'm a draggable" },
+        },
       ],
     },
     {
